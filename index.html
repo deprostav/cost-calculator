@@ -1,874 +1,520 @@
 <!DOCTYPE html>
 <html lang="cs">
-  <head>
-    <meta
-      http-equiv="Content-Type"
-      content="text/html; charset=UTF-8" />
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta
-      name="robots"
-      content="noindex, nofollow" />
+		<meta name="robots" content="noindex, nofollow" />
 
-    <link
-      rel="stylesheet"
-      href="style.css" />
-  </head>
+		<link rel="stylesheet" href="style.css" />
+	</head>
 
-  <body>
-    <main class="main-content">
-      <section class="calculator">
-        <div class="tabs">
-          <button
-            class="tab-button active"
-            data-tab="dotace">
-            <i class="fa-solid fa-calculator"></i> Dotace
-          </button>
-          <button
-            class="tab-button"
-            data-tab="finance">
-            <i class="fa-solid fa-piggy-bank"></i> Financování
-          </button>
-          <button
-            class="tab-button"
-            data-tab="energie">
-            <i class="fa-solid fa-bolt"></i> Energie
-          </button>
-          <button
-            class="tab-button"
-            data-tab="uspory">
-            <i class="fa-solid fa-seedling"></i> Úspory
-          </button>
-          <button
-            class="tab-button"
-            data-tab="vysledek">
-            <i class="fa-solid fa-chart-line"></i> Výsledek
-          </button>
-          <button
-            class="tab-button"
-            data-tab="nabidka">
-            <i class="fa-solid fa-file-pdf"></i> Nabídka
-          </button>
-        </div>
+	<body>
+		<main class="main-content">
+			<section class="calculator">
+				<div class="tabs">
+					<button class="tab-button active" data-tab="dotace"><i class="fa-solid fa-calculator"></i> Dotace</button>
+					<button class="tab-button" data-tab="finance"><i class="fa-solid fa-piggy-bank"></i> Financování</button>
+					<button class="tab-button" data-tab="energie"><i class="fa-solid fa-bolt"></i> Energie</button>
+					<button class="tab-button" data-tab="uspory"><i class="fa-solid fa-seedling"></i> Úspory</button>
+					<button class="tab-button" data-tab="vysledek"><i class="fa-solid fa-chart-line"></i> Výsledek</button>
+					<button class="tab-button" data-tab="nabidka"><i class="fa-solid fa-file-pdf"></i> Nabídka</button>
+				</div>
 
-        <!-- DOTACE TAB -->
-        <div
-          class="tab-content active"
-          id="dotace">
-          <div class="form-group">
-            <label for="clientName">Jméno klienta:</label>
-            <input
-              type="text"
-              id="clientName"
-              placeholder="Např. Jan"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <label for="clientSurname">Příjmení klienta:</label>
-            <input
-              type="text"
-              id="clientSurname"
-              placeholder="Např. Novák"
-              oninput="calculateEverything()" />
-          </div>
-          <h2><i class="fa-solid fa-calculator"></i> Výpočet dotace</h2>
-          <div class="form-group">
-            <label for="facadeArea">Plocha fasády (m²):</label>
-            <input
-              type="number"
-              min="0"
-              id="facadeArea"
-              placeholder="Např. 120"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <label for="cellarCeilingArea">Plocha stropů sklepa (m²):</label>
-            <input
-              type="number"
-              min="0"
-              id="cellarCeilingArea"
-              placeholder="Např. 120"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <label for="roofArea"
-              ><i class="fa-solid fa-house-chimney"></i> Plocha střechy nebo
-              půdy (m²):</label
-            >
-            <input
-              type="number"
-              min="0"
-              id="roofArea"
-              placeholder="Např. 80"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <label for="windowArea">Plocha oken (m²):</label>
-            <input
-              type="number"
-              min="0"
-              id="windowArea"
-              placeholder="Např. 30"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <label for="doorArea">Plocha dveří (m²):</label>
-            <input
-              type="number"
-              min="0"
-              id="doorArea"
-              placeholder="Např. 30"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <label for="floorArea"
-              ><i class="fa-solid fa-border-all"></i> Plocha podlah k zemině
-              (m²):</label
-            >
-            <input
-              type="number"
-              min="0"
-              id="floorArea"
-              placeholder="Např. 100"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <label for="shadingArea"
-              ><i class="fa-solid fa-sun"></i> Plocha stínění (m²):</label
-            >
-            <input
-              type="number"
-              min="0"
-              id="shadingArea"
-              placeholder="Např. 50"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <label for="numChildrenFullCare"
-              ><i class="fa-solid fa-child"></i> Počet nezaopatřených dětí ve
-              výlučné péči:</label
-            >
-            <input
-              type="number"
-              min="0"
-              id="numChildrenFullCare"
-              placeholder="Např. 2"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <label for="numChildrenSharedCare"
-              ><i class="fa-solid fa-children"></i> Počet nezaopatřených dětí ve
-              střídavé péči:</label
-            >
-            <input
-              type="number"
-              min="0"
-              id="numChildrenSharedCare"
-              placeholder="Např. 1"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="switch-wrapper">
-            <input
-              type="checkbox"
-              id="selectedRegionBonus"
-              onchange="calculateEverything()" />
-            <label
-              class="switch-label"
-              for="selectedRegionBonus"></label>
-            <span class="switch-text"
-              >Bydlíte ve vymezené obci nebo kraji?</span
-            >
-          </div>
-          <div class="button-group">
-            <button
-              id="heatPumpButton"
-              class="unselected"
-              onclick="toggleMeasure(&#39;heatPump&#39;)">
-              <i class="fa-solid fa-fire-flame-curved"></i> Tepelné čerpadlo
-            </button>
-            <button
-              id="ventilationButton"
-              class="unselected"
-              onclick="toggleMeasure(&#39;ventilation&#39;)">
-              <i class="fa-solid fa-wind"></i> Rekuperace vzduchu
-            </button>
-            <button
-              id="waterRekuperationButton"
-              class="unselected"
-              onclick="toggleMeasure(&#39;waterRekuperation&#39;)">
-              <i class="fa-solid fa-water"></i> Rekuperace teplé vody
-            </button>
-            <button
-              id="photovoltaicButton"
-              class="unselected"
-              onclick="toggleMeasure(&#39;photovoltaic&#39;)">
-              <i class="fa-solid fa-solar-panel"></i> Fotovoltaika
-            </button>
-            <button
-              id="rainwaterTankIrrigationButton"
-              class="unselected"
-              onclick="toggleRainwaterTankIrrigation(&#39;rainwaterTankIrrigation&#39;)">
-              <i class="fa-solid fa-cloud-rain"></i> Nádrž na dešťovou vodu -
-              Zálivka
-            </button>
-            <button
-              id="rainwaterTankIrrigationWCButton"
-              class="unselected"
-              onclick="toggleRainwaterTankIrrigation(&#39;rainwaterTankIrrigationWC&#39;)">
-              <i class="fa-solid fa-toilet"></i> Nádrž na dešťovou vodu -
-              Zálivka + WC
-            </button>
-            <button
-              id="chargingStationButton"
-              class="unselected"
-              onclick="toggleMeasure(&#39;chargingStation&#39;)">
-              <i class="fa-solid fa-charging-station"></i> Elektro nabíječka
-            </button>
-            <button
-              id="greenRoofButton"
-              class="unselected"
-              onclick="toggleMeasure(&#39;greenRoof&#39;)">
-              <i class="fa-solid fa-leaf"></i> Zelená střecha
-            </button>
-          </div>
-          <div
-            id="heatPumpOptions"
-            style="display: none">
-            <div class="form-group">
-              <label for="heatPumpType"
-                ><i class="fa-solid fa-fire-flame-curved"></i> Typ tepelného
-                čerpadla:</label
-              >
-              <select
-                id="heatPumpType"
-                onchange="calculateEverything()">
-                <option value="Zadny">0 Kč</option>
-                <option value="VzduchVzduchUT">
-                  Vzduch - Vzduch pro ústřední topení - dotace 60 000 Kč
-                </option>
-                <option value="VzduchVzduchUTWater">
-                  Vzduch - Vzduch pro ústřední topení a ohřev vody - dotace 80
-                  000 Kč
-                </option>
-                <option value="VzduchVzduchUTWaterFVE">
-                  Vzduch - Vzduch pro ohřev vody a FVE - dotace 140 000 Kč
-                </option>
-                <option value="VzduchVodaUT">
-                  Vzduch - Voda pro ústřední topení - dotace 80 000 Kč
-                </option>
-                <option value="VzduchVodaUTWater">
-                  Vzduch - Voda pro ústřední topení a ohřev vody - dotace 100
-                  000 Kč
-                </option>
-                <option value="VzduchVodaUTWaterFVE">
-                  Vzduch - Voda pro ohřev vody a FVE - dotace 140 000 Kč
-                </option>
-                <option value="ZemeVodaUTWater">
-                  Země - Voda pro ústřední topení a ohřev vody - dotace 140 000
-                  Kč
-                </option>
-                <option value="ZemeVodaUT">
-                  Země - Voda pro ústřední topení - dotace 120 000 Kč
-                </option>
-                <option value="VodaVodaUTWater">
-                  Voda - Voda pro ústřední topení a ohřev vody - dotace 140 000
-                  Kč
-                </option>
-                <option value="VodaVodaUT">
-                  Voda - Voda pro ústřední topení - dotace 120 000 Kč
-                </option>
-                <option value="KotelBio">
-                  Kotel na biomasu vč. aku nádrže - dotace 80 000 Kč
-                </option>
-              </select>
-            </div>
-          </div>
-          <div
-            id="photovoltaicSliderContainer"
-            style="display: none">
-            <label for="photovoltaicSlider"
-              ><i class="fa-solid fa-solar-panel"></i> Výkon fotovoltaiky (kWp):
-              <span id="photovoltaicValue">5 kWp</span></label
-            >
-            <input
-              type="range"
-              id="photovoltaicSlider"
-              min="1"
-              max="10"
-              value="5"
-              oninput="updatePhotovoltaicValue()" />
-          </div>
-          <div
-            id="greenRoofFields"
-            style="display: none">
-            <div class="form-group">
-              <label for="extensiveRoofArea"
-                ><i class="fa-solid fa-leaf"></i> Extenzivní střecha
-                (m²):</label
-              >
-              <input
-                type="number"
-                min="0"
-                id="extensiveRoofArea"
-                placeholder="Např. 40"
-                oninput="calculateEverything()" />
-            </div>
-            <div class="form-group">
-              <label for="semiIntensiveRoofArea"
-                ><i class="fa-solid fa-leaf"></i> Semi-intenzivní střecha
-                (m²):</label
-              >
-              <input
-                type="number"
-                min="0"
-                id="semiIntensiveRoofArea"
-                placeholder="Např. 30"
-                oninput="calculateEverything()" />
-            </div>
-            <div class="form-group">
-              <label for="intensiveRoofArea"
-                ><i class="fa-solid fa-leaf"></i> Intenzivní střecha
-                (m²):</label
-              >
-              <input
-                type="number"
-                min="0"
-                id="intensiveRoofArea"
-                placeholder="Např. 20"
-                oninput="calculateEverything()" />
-            </div>
-            <div class="form-group">
-              <label for="steepRoofArea"
-                ><i class="fa-solid fa-leaf"></i> Šikmá střecha (m²):</label
-              >
-              <input
-                type="number"
-                min="0"
-                id="steepRoofArea"
-                placeholder="Např. 10"
-                oninput="calculateEverything()" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="tankVolume"
-              ><i class="fa-solid fa-tint"></i> Objem nádrže na dešťovou vodu
-              (m³):</label
-            >
-            <input
-              type="number"
-              min="0"
-              id="tankVolume"
-              placeholder="Např. 5"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <label
-              ><i class="fa-solid fa-money-bill-wave"></i> Celková
-              dotace:</label
-            >
-            <p
-              id="totalSubsidy"
-              class="result money">
-              50 000.00 Kč
-            </p>
-          </div>
-          <div class="form-group">
-            <label
-              ><i class="fa-solid fa-file-invoice-dollar"></i> Předběžný
-              rozpočet na rekonstrukci:</label
-            >
-            <p
-              id="estimatedBudget"
-              class="result money">
-              110 000.00 Kč
-            </p>
-            <p
-              id="budgetWarning"
-              class="warning-text"></p>
-          </div>
-          <div class="form-group">
-            <label
-              ><i class="fa-solid fa-hand-holding-dollar"></i> Doporučená výše
-              financování:</label
-            >
-            <p
-              id="recommendedLoanAmount"
-              class="result money">
-              60 000.00 Kč
-            </p>
-          </div>
-        </div>
+				<!-- DOTACE TAB -->
+				<div class="tab-content active" id="dotace">
+					<div class="form-group">
+						<label for="clientName">Jméno klienta:</label>
+						<input type="text" id="clientName" placeholder="Např. Jan" oninput="calculateEverything()" />
+					</div>
+					<div class="form-group">
+						<label for="clientSurname">Příjmení klienta:</label>
+						<input type="text" id="clientSurname" placeholder="Např. Novák" oninput="calculateEverything()" />
+					</div>
+					<h2><i class="fa-solid fa-calculator"></i> Výpočet dotace</h2>
+					<div class="form-group">
+						<label for="facadeArea">Plocha fasády (m²):</label>
+						<input type="number" min="0" id="facadeArea" placeholder="Např. 120" oninput="calculateEverything()" />
+					</div>
+					<div class="form-group">
+						<label for="cellarCeilingArea">Plocha stropů sklepa (m²):</label>
+						<input
+							type="number"
+							min="0"
+							id="cellarCeilingArea"
+							placeholder="Např. 120"
+							oninput="calculateEverything()"
+						/>
+					</div>
+					<div class="form-group">
+						<label for="roofArea"><i class="fa-solid fa-house-chimney"></i> Plocha střechy nebo půdy (m²):</label>
+						<input type="number" min="0" id="roofArea" placeholder="Např. 80" oninput="calculateEverything()" />
+					</div>
+					<div class="form-group">
+						<label for="windowArea">Plocha oken (m²):</label>
+						<input type="number" min="0" id="windowArea" placeholder="Např. 30" oninput="calculateEverything()" />
+					</div>
+					<div class="form-group">
+						<label for="doorArea">Plocha dveří (m²):</label>
+						<input type="number" min="0" id="doorArea" placeholder="Např. 30" oninput="calculateEverything()" />
+					</div>
+					<div class="form-group">
+						<label for="floorArea"><i class="fa-solid fa-border-all"></i> Plocha podlah k zemině (m²):</label>
+						<input type="number" min="0" id="floorArea" placeholder="Např. 100" oninput="calculateEverything()" />
+					</div>
+					<div class="form-group">
+						<label for="shadingArea"><i class="fa-solid fa-sun"></i> Plocha stínění (m²):</label>
+						<input type="number" min="0" id="shadingArea" placeholder="Např. 50" oninput="calculateEverything()" />
+					</div>
+					<div class="form-group">
+						<label for="numChildrenFullCare"
+							><i class="fa-solid fa-child"></i> Počet nezaopatřených dětí ve výlučné péči:</label
+						>
+						<input
+							type="number"
+							min="0"
+							id="numChildrenFullCare"
+							placeholder="Např. 2"
+							oninput="calculateEverything()"
+						/>
+					</div>
+					<div class="form-group">
+						<label for="numChildrenSharedCare"
+							><i class="fa-solid fa-children"></i> Počet nezaopatřených dětí ve střídavé péči:</label
+						>
+						<input
+							type="number"
+							min="0"
+							id="numChildrenSharedCare"
+							placeholder="Např. 1"
+							oninput="calculateEverything()"
+						/>
+					</div>
+					<div class="switch-wrapper">
+						<input type="checkbox" id="selectedRegionBonus" onchange="calculateEverything()" />
+						<label class="switch-label" for="selectedRegionBonus"></label>
+						<span class="switch-text">Bydlíte ve vymezené obci nebo kraji?</span>
+					</div>
+					<div class="button-group">
+						<button id="heatPumpButton" class="unselected" onclick="toggleMeasure(&#39;heatPump&#39;)">
+							<i class="fa-solid fa-fire-flame-curved"></i> Tepelné čerpadlo
+						</button>
+						<button id="ventilationButton" class="unselected" onclick="toggleMeasure(&#39;ventilation&#39;)">
+							<i class="fa-solid fa-wind"></i> Rekuperace vzduchu
+						</button>
+						<button
+							id="waterRekuperationButton"
+							class="unselected"
+							onclick="toggleMeasure(&#39;waterRekuperation&#39;)"
+						>
+							<i class="fa-solid fa-water"></i> Rekuperace teplé vody
+						</button>
+						<button id="photovoltaicButton" class="unselected" onclick="toggleMeasure(&#39;photovoltaic&#39;)">
+							<i class="fa-solid fa-solar-panel"></i> Fotovoltaika
+						</button>
+						<button
+							id="rainwaterTankIrrigationButton"
+							class="unselected"
+							onclick="toggleRainwaterTankIrrigation(&#39;rainwaterTankIrrigation&#39;)"
+						>
+							<i class="fa-solid fa-cloud-rain"></i> Nádrž na dešťovou vodu - Zálivka
+						</button>
+						<button
+							id="rainwaterTankIrrigationWCButton"
+							class="unselected"
+							onclick="toggleRainwaterTankIrrigation(&#39;rainwaterTankIrrigationWC&#39;)"
+						>
+							<i class="fa-solid fa-toilet"></i> Nádrž na dešťovou vodu - Zálivka + WC
+						</button>
+						<button id="chargingStationButton" class="unselected" onclick="toggleMeasure(&#39;chargingStation&#39;)">
+							<i class="fa-solid fa-charging-station"></i> Elektro nabíječka
+						</button>
+						<button id="greenRoofButton" class="unselected" onclick="toggleMeasure(&#39;greenRoof&#39;)">
+							<i class="fa-solid fa-leaf"></i> Zelená střecha
+						</button>
+					</div>
+					<div id="heatPumpOptions" style="display: none">
+						<div class="form-group">
+							<label for="heatPumpType"><i class="fa-solid fa-fire-flame-curved"></i> Typ tepelného čerpadla:</label>
+							<select id="heatPumpType" onchange="calculateEverything()">
+								<option value="Zadny">0 Kč</option>
+								<option value="VzduchVzduchUT">Vzduch - Vzduch pro ústřední topení - dotace 60 000 Kč</option>
+								<option value="VzduchVzduchUTWater">
+									Vzduch - Vzduch pro ústřední topení a ohřev vody - dotace 80 000 Kč
+								</option>
+								<option value="VzduchVzduchUTWaterFVE">Vzduch - Vzduch pro ohřev vody a FVE - dotace 140 000 Kč</option>
+								<option value="VzduchVodaUT">Vzduch - Voda pro ústřední topení - dotace 80 000 Kč</option>
+								<option value="VzduchVodaUTWater">
+									Vzduch - Voda pro ústřední topení a ohřev vody - dotace 100 000 Kč
+								</option>
+								<option value="VzduchVodaUTWaterFVE">Vzduch - Voda pro ohřev vody a FVE - dotace 140 000 Kč</option>
+								<option value="ZemeVodaUTWater">
+									Země - Voda pro ústřední topení a ohřev vody - dotace 140 000 Kč
+								</option>
+								<option value="ZemeVodaUT">Země - Voda pro ústřední topení - dotace 120 000 Kč</option>
+								<option value="VodaVodaUTWater">
+									Voda - Voda pro ústřední topení a ohřev vody - dotace 140 000 Kč
+								</option>
+								<option value="VodaVodaUT">Voda - Voda pro ústřední topení - dotace 120 000 Kč</option>
+								<option value="KotelBio">Kotel na biomasu vč. aku nádrže - dotace 80 000 Kč</option>
+							</select>
+						</div>
+					</div>
+					<div id="photovoltaicSliderContainer" style="display: none">
+						<label for="photovoltaicSlider"
+							><i class="fa-solid fa-solar-panel"></i> Výkon fotovoltaiky (kWp):
+							<span id="photovoltaicValue">5 kWp</span></label
+						>
+						<input
+							type="range"
+							id="photovoltaicSlider"
+							min="1"
+							max="10"
+							value="5"
+							oninput="updatePhotovoltaicValue()"
+						/>
+					</div>
+					<div id="greenRoofFields" style="display: none">
+						<div class="form-group">
+							<label for="extensiveRoofArea"><i class="fa-solid fa-leaf"></i> Extenzivní střecha (m²):</label>
+							<input
+								type="number"
+								min="0"
+								id="extensiveRoofArea"
+								placeholder="Např. 40"
+								oninput="calculateEverything()"
+							/>
+						</div>
+						<div class="form-group">
+							<label for="semiIntensiveRoofArea"><i class="fa-solid fa-leaf"></i> Semi-intenzivní střecha (m²):</label>
+							<input
+								type="number"
+								min="0"
+								id="semiIntensiveRoofArea"
+								placeholder="Např. 30"
+								oninput="calculateEverything()"
+							/>
+						</div>
+						<div class="form-group">
+							<label for="intensiveRoofArea"><i class="fa-solid fa-leaf"></i> Intenzivní střecha (m²):</label>
+							<input
+								type="number"
+								min="0"
+								id="intensiveRoofArea"
+								placeholder="Např. 20"
+								oninput="calculateEverything()"
+							/>
+						</div>
+						<div class="form-group">
+							<label for="steepRoofArea"><i class="fa-solid fa-leaf"></i> Šikmá střecha (m²):</label>
+							<input type="number" min="0" id="steepRoofArea" placeholder="Např. 10" oninput="calculateEverything()" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="tankVolume"><i class="fa-solid fa-tint"></i> Objem nádrže na dešťovou vodu (m³):</label>
+						<input type="number" min="0" id="tankVolume" placeholder="Např. 5" oninput="calculateEverything()" />
+					</div>
+					<div class="form-group">
+						<label><i class="fa-solid fa-money-bill-wave"></i> Celková dotace:</label>
+						<p id="totalSubsidy" class="result money">50 000.00 Kč</p>
+					</div>
+					<div class="form-group">
+						<label><i class="fa-solid fa-file-invoice-dollar"></i> Předběžný rozpočet na rekonstrukci:</label>
+						<p id="estimatedBudget" class="result money">110 000.00 Kč</p>
+						<p id="budgetWarning" class="warning-text"></p>
+					</div>
+					<div class="form-group">
+						<label><i class="fa-solid fa-hand-holding-dollar"></i> Doporučená výše financování:</label>
+						<p id="recommendedLoanAmount" class="result money">60 000.00 Kč</p>
+					</div>
+				</div>
 
-        <!-- FINANCE TAB -->
-        <div
-          class="tab-content"
-          id="finance">
-          <h2><i class="fa-solid fa-piggy-bank"></i> Financování</h2>
-          <div class="form-group">
-            <label for="loanAmount"
-              ><i class="fa-solid fa-hand-holding-dollar"></i> Výše úvěru
-              (Kč):</label
-            >
-            <input
-              type="number"
-              min="0"
-              id="loanAmount"
-              placeholder="Např. 500000"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <label
-              ><i class="fa-solid fa-calendar-alt"></i> Měsíční splátka:</label
-            >
-            <p
-              id="monthlyPayment"
-              class="result money">
-              0.00
-            </p>
-          </div>
-        </div>
+				<!-- FINANCE TAB -->
+				<div class="tab-content" id="finance">
+					<h2><i class="fa-solid fa-piggy-bank"></i> Financování</h2>
+					<div class="form-group">
+						<label for="loanAmount"><i class="fa-solid fa-hand-holding-dollar"></i> Výše úvěru (Kč):</label>
+						<input type="number" min="0" id="loanAmount" placeholder="Např. 500000" oninput="calculateEverything()" />
+					</div>
+					<div class="form-group">
+						<label><i class="fa-solid fa-calendar-alt"></i> Měsíční splátka:</label>
+						<p id="monthlyPayment" class="result money">0.00</p>
+					</div>
+				</div>
 
-        <!-- ENERGIE TAB -->
-        <div
-          class="tab-content"
-          id="energie">
-          <h2><i class="fa-solid fa-bolt"></i> Energie</h2>
-          <div class="form-group">
-            <label for="houseArea"
-              ><i class="fa-solid fa-house"></i> Plocha domu (m²):</label
-            >
-            <input
-              type="number"
-              min="0"
-              id="houseArea"
-              placeholder="Např. 150"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <button onclick="toggleEnergyClassButtons()">
-              <i class="fa-solid fa-chart-bar"></i> Zvolit energetickou třídu
-            </button>
-          </div>
-          <div
-            class="button-group energy-class"
-            style="display: none">
-            <button
-              class="energy-class-button energy-class-a"
-              onclick="setEnergyClass(&#39;A&#39;)">
-              A
-            </button>
-            <button
-              class="energy-class-button energy-class-b"
-              onclick="setEnergyClass(&#39;B&#39;)">
-              B
-            </button>
-            <button
-              class="energy-class-button energy-class-c"
-              onclick="setEnergyClass(&#39;C&#39;)">
-              C
-            </button>
-            <button
-              class="energy-class-button energy-class-d"
-              onclick="setEnergyClass(&#39;D&#39;)">
-              D
-            </button>
-            <button
-              class="energy-class-button energy-class-e"
-              onclick="setEnergyClass(&#39;E&#39;)">
-              E
-            </button>
-            <button
-              class="energy-class-button energy-class-f"
-              onclick="setEnergyClass(&#39;F&#39;)">
-              F
-            </button>
-            <button
-              class="energy-class-button energy-class-g"
-              onclick="setEnergyClass(&#39;G&#39;)">
-              G
-            </button>
-          </div>
-          <div class="form-group">
-            <label for="electricityUsage"
-              ><i class="fa-solid fa-bolt"></i> Roční spotřeba elektřiny
-              (MWh):</label
-            >
-            <input
-              type="number"
-              min="0"
-              id="electricityUsage"
-              placeholder="Např. 12"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <label for="gasUsage"
-              ><i class="fa-solid fa-burn"></i> Roční spotřeba plynu
-              (MWh):</label
-            >
-            <input
-              type="number"
-              min="0"
-              id="gasUsage"
-              placeholder="Např. 8"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <label for="monthlyPayments"
-              ><i class="fa-solid fa-money-bill-wave"></i> Měsíční platby za
-              energie (Kč):</label
-            >
-            <input
-              type="number"
-              min="0"
-              id="monthlyPayments"
-              placeholder="Např. 4000"
-              oninput="calculateEverything()" />
-          </div>
-          <div class="form-group">
-            <button onclick="toggleCustomEnergyPriceFields()">
-              <i class="fa-solid fa-cog"></i> Zadat vlastní ceny energií
-            </button>
-          </div>
-          <div
-            id="customEnergyPriceFields"
-            style="display: none">
-            <div class="form-group">
-              <label for="electricityPrice"
-                ><i class="fa-solid fa-bolt"></i> Cena elektřiny za MWh
-                (Kč):</label
-              >
-              <input
-                type="number"
-                min="0"
-                id="electricityPrice"
-                placeholder="Např. 5000"
-                oninput="calculateEverything()" />
-            </div>
-            <div class="form-group">
-              <label for="gasPrice"
-                ><i class="fa-solid fa-burn"></i> Cena plynu za MWh (Kč):</label
-              >
-              <input
-                type="number"
-                min="0"
-                id="gasPrice"
-                placeholder="Např. 2000"
-                oninput="calculateEverything()" />
-            </div>
-          </div>
-          <div id="energyCostDisclaimer">
-            <p>
-              <i class="fa-solid fa-info-circle"></i> Používáme průměrné ceny
-              energií pro výpočet.
-            </p>
-          </div>
-          <div class="form-group">
-            <label
-              ><i class="fa-solid fa-money-bill-wave"></i> Měsíční náklady na
-              energie:</label
-            >
-            <p
-              id="monthlyEnergyCost"
-              class="result money">
-              550.00
-            </p>
-          </div>
-        </div>
+				<!-- ENERGIE TAB -->
+				<div class="tab-content" id="energie">
+					<h2><i class="fa-solid fa-bolt"></i> Energie</h2>
+					<div class="form-group">
+						<label for="houseArea"><i class="fa-solid fa-house"></i> Plocha domu (m²):</label>
+						<input type="number" min="0" id="houseArea" placeholder="Např. 150" oninput="calculateEverything()" />
+					</div>
+					<div class="form-group">
+						<button onclick="toggleEnergyClassButtons()">
+							<i class="fa-solid fa-chart-bar"></i> Zvolit energetickou třídu
+						</button>
+					</div>
+					<div class="button-group energy-class" style="display: none">
+						<button class="energy-class-button energy-class-a" onclick="setEnergyClass(&#39;A&#39;)">A</button>
+						<button class="energy-class-button energy-class-b" onclick="setEnergyClass(&#39;B&#39;)">B</button>
+						<button class="energy-class-button energy-class-c" onclick="setEnergyClass(&#39;C&#39;)">C</button>
+						<button class="energy-class-button energy-class-d" onclick="setEnergyClass(&#39;D&#39;)">D</button>
+						<button class="energy-class-button energy-class-e" onclick="setEnergyClass(&#39;E&#39;)">E</button>
+						<button class="energy-class-button energy-class-f" onclick="setEnergyClass(&#39;F&#39;)">F</button>
+						<button class="energy-class-button energy-class-g" onclick="setEnergyClass(&#39;G&#39;)">G</button>
+					</div>
+					<div class="form-group">
+						<label for="electricityUsage"><i class="fa-solid fa-bolt"></i> Roční spotřeba elektřiny (MWh):</label>
+						<input type="number" min="0" id="electricityUsage" placeholder="Např. 12" oninput="calculateEverything()" />
+					</div>
+					<div class="form-group">
+						<label for="gasUsage"><i class="fa-solid fa-burn"></i> Roční spotřeba plynu (MWh):</label>
+						<input type="number" min="0" id="gasUsage" placeholder="Např. 8" oninput="calculateEverything()" />
+					</div>
+					<div class="form-group">
+						<label for="monthlyPayments"
+							><i class="fa-solid fa-money-bill-wave"></i> Měsíční platby za energie (Kč):</label
+						>
+						<input
+							type="number"
+							min="0"
+							id="monthlyPayments"
+							placeholder="Např. 4000"
+							oninput="calculateEverything()"
+						/>
+					</div>
+					<div class="form-group">
+						<button onclick="toggleCustomEnergyPriceFields()">
+							<i class="fa-solid fa-cog"></i> Zadat vlastní ceny energií
+						</button>
+					</div>
+					<div id="customEnergyPriceFields" style="display: none">
+						<div class="form-group">
+							<label for="electricityPrice"><i class="fa-solid fa-bolt"></i> Cena elektřiny za MWh (Kč):</label>
+							<input
+								type="number"
+								min="0"
+								id="electricityPrice"
+								placeholder="Např. 5000"
+								oninput="calculateEverything()"
+							/>
+						</div>
+						<div class="form-group">
+							<label for="gasPrice"><i class="fa-solid fa-burn"></i> Cena plynu za MWh (Kč):</label>
+							<input type="number" min="0" id="gasPrice" placeholder="Např. 2000" oninput="calculateEverything()" />
+						</div>
+					</div>
+					<div id="energyCostDisclaimer">
+						<p><i class="fa-solid fa-info-circle"></i> Používáme průměrné ceny energií pro výpočet.</p>
+					</div>
+					<div class="form-group">
+						<label><i class="fa-solid fa-money-bill-wave"></i> Měsíční náklady na energie:</label>
+						<p id="monthlyEnergyCost" class="result money">550.00</p>
+					</div>
+				</div>
 
-        <!-- USPORY TAB -->
-        <div
-          class="tab-content"
-          id="uspory">
-          <h2><i class="fa-solid fa-seedling"></i> Úspory</h2>
-          <div class="button-group">
-            <button
-              id="usporyInsulationButton"
-              class="unselected"
-              onclick="toggleEnergyMeasure(&#39;insulation&#39;)">
-              <i class="fa-solid fa-thermometer-half"></i> Optimální zateplení
-            </button>
-            <button
-              id="usporyHeatPumpButton"
-              class="unselected"
-              onclick="toggleEnergyMeasure(&#39;heatPump&#39;)">
-              <i class="fa-solid fa-fire-flame-curved"></i> Tepelné čerpadlo
-            </button>
-            <button
-              id="usporyVentilationButton"
-              class="unselected"
-              onclick="toggleEnergyMeasure(&#39;ventilation&#39;)">
-              <i class="fa-solid fa-wind"></i> Rekuperace vzduchu
-            </button>
-            <button
-              id="usporyWaterRekuperationButton"
-              class="unselected"
-              onclick="toggleEnergyMeasure(&#39;waterRekuperation&#39;)">
-              <i class="fa-solid fa-water"></i> Rekuperace teplé vody
-            </button>
-          </div>
-          <div class="form-group">
-            <label
-              ><i class="fa-solid fa-money-bill-wave"></i> Nová měsíční platba
-              za energie:</label
-            >
-            <p
-              id="finalMonthlyPayment"
-              class="result money">
-              550.00
-            </p>
-          </div>
-          <div class="form-group">
-            <label
-              ><i class="fa-solid fa-tachometer-alt"></i> Nová roční spotřeba
-              energie:</label
-            >
-            <p
-              id="finalEnergyUsage"
-              class="result unit"
-              data-unit="kWh">
-              0.00
-            </p>
-          </div>
-          <div class="form-group">
-            <label
-              ><i class="fa-solid fa-leaf"></i> Úspora CO₂ (tun/rok):</label
-            >
-            <p
-              id="totalCo2Savings"
-              class="result unit"
-              data-unit="t">
-              0.00
-            </p>
-          </div>
-          <div class="form-group">
-            <label
-              ><i class="fa-solid fa-chart-bar"></i> Nová energetická
-              třída:</label
-            >
-            <p
-              id="finalEnergyClass"
-              class="result energy-class-display disabled">
-              -
-            </p>
-          </div>
-        </div>
+				<!-- USPORY TAB -->
+				<div class="tab-content" id="uspory">
+					<h2><i class="fa-solid fa-seedling"></i> Úspory</h2>
+					<div class="button-group">
+						<button id="usporyInsulationButton" class="unselected" onclick="toggleEnergyMeasure(&#39;insulation&#39;)">
+							<i class="fa-solid fa-thermometer-half"></i> Optimální zateplení
+						</button>
+						<button id="usporyHeatPumpButton" class="unselected" onclick="toggleEnergyMeasure(&#39;heatPump&#39;)">
+							<i class="fa-solid fa-fire-flame-curved"></i> Tepelné čerpadlo
+						</button>
+						<button
+							id="usporyVentilationButton"
+							class="unselected"
+							onclick="toggleEnergyMeasure(&#39;ventilation&#39;)"
+						>
+							<i class="fa-solid fa-wind"></i> Rekuperace vzduchu
+						</button>
+						<button
+							id="usporyWaterRekuperationButton"
+							class="unselected"
+							onclick="toggleEnergyMeasure(&#39;waterRekuperation&#39;)"
+						>
+							<i class="fa-solid fa-water"></i> Rekuperace teplé vody
+						</button>
+					</div>
+					<div class="form-group">
+						<label><i class="fa-solid fa-money-bill-wave"></i> Nová měsíční platba za energie:</label>
+						<p id="finalMonthlyPayment" class="result money">550.00</p>
+					</div>
+					<div class="form-group">
+						<label><i class="fa-solid fa-tachometer-alt"></i> Nová roční spotřeba energie:</label>
+						<p id="finalEnergyUsage" class="result unit" data-unit="kWh">0.00</p>
+					</div>
+					<div class="form-group">
+						<label><i class="fa-solid fa-leaf"></i> Úspora CO₂ (tun/rok):</label>
+						<p id="totalCo2Savings" class="result unit" data-unit="t">0.00</p>
+					</div>
+					<div class="form-group">
+						<label><i class="fa-solid fa-chart-bar"></i> Nová energetická třída:</label>
+						<p id="finalEnergyClass" class="result energy-class-display disabled">-</p>
+					</div>
+				</div>
 
-        <!-- VYSLEDEK TAB -->
-        <div
-          class="tab-content"
-          id="vysledek">
-          <h2><i class="fa-solid fa-chart-line"></i> Výsledek</h2>
-          <div class="form-group">
-            <label
-              ><i class="fa-solid fa-money-bill-wave"></i> Celkové měsíční
-              náklady:</label
-            >
-            <p
-              id="totalMonthlyCost"
-              class="result money">
-              550.00
-            </p>
-          </div>
-          <div class="form-group">
-            <label
-              ><i class="fa-solid fa-piggy-bank"></i> Celková měsíční
-              úspora:</label
-            >
-            <p
-              id="totalSavings"
-              class="result money">
-              0.00
-            </p>
-          </div>
-          <div
-            id="energySurplusDisclaimer"
-            style="display: none">
-            <p>
-              <i class="fa-solid fa-info-circle"></i> Produkujete přebytečnou
-              energii, kterou můžete prodat zpět do sítě.
-            </p>
-          </div>
-        </div>
+				<!-- VYSLEDEK TAB -->
+				<div class="tab-content" id="vysledek">
+					<h2><i class="fa-solid fa-chart-line"></i> Výsledek</h2>
+					<div class="form-group">
+						<label><i class="fa-solid fa-money-bill-wave"></i> Celkové měsíční náklady:</label>
+						<p id="totalMonthlyCost" class="result money">550.00</p>
+					</div>
+					<div class="form-group">
+						<label><i class="fa-solid fa-piggy-bank"></i> Celková měsíční úspora:</label>
+						<p id="totalSavings" class="result money">0.00</p>
+					</div>
+					<div id="energySurplusDisclaimer" style="display: none">
+						<p>
+							<i class="fa-solid fa-info-circle"></i> Produkujete přebytečnou energii, kterou můžete prodat zpět do
+							sítě.
+						</p>
+					</div>
+				</div>
 
-        <!-- VÝSLEDKOVÁ STRÁNKA (Nabídka) -->
-        <div
-          class="tab-content"
-          id="nabidka">
-          <h2><i class="fa-solid fa-file-pdf"></i> Nabídka</h2>
-          <div class="offer-client-info">
-            <div class="client-box">
-              <h4><i class="fa-solid fa-user"></i> Klient</h4>
-              <p>
-                <i class="fa-solid fa-user"></i>
-                <span id="offerClientName">Neuvedeno </span>
-              </p>
-            </div>
-            <div class="client-box">
-              <h4><i class="fa-solid fa-calendar"></i> Datum</h4>
-              <p>
-                <i class="fa-solid fa-calendar"></i>
-                <span id="offerDate">7. 11. 2024</span>
-              </p>
-            </div>
-          </div>
+				<!-- VÝSLEDKOVÁ STRÁNKA (Nabídka) -->
+				<div class="tab-content" id="nabidka">
+					<h2><i class="fa-solid fa-file-pdf"></i> Nabídka</h2>
+					<div class="offer-client-info">
+						<div class="client-box">
+							<h4><i class="fa-solid fa-user"></i> Klient</h4>
+							<p>
+								<i class="fa-solid fa-user"></i>
+								<span id="offerClientName">Neuvedeno </span>
+							</p>
+						</div>
+						<div class="client-box">
+							<h4><i class="fa-solid fa-calendar"></i> Datum</h4>
+							<p>
+								<i class="fa-solid fa-calendar"></i>
+								<span id="offerDate">7. 11. 2024</span>
+							</p>
+						</div>
+					</div>
 
-          <!-- Rozměry domu -->
-          <div class="offer-section">
-            <h4><i class="fa-solid fa-ruler-combined"></i> Rozměry domu</h4>
-            <ul>
-              <li>
-                <i class="fa-solid fa-house"></i> Plocha fasády:&nbsp;
-                <span id="offerFacadeArea">0</span>m²
-              </li>
-              <li>
-                <i class="fa-solid fa-house-chimney"></i> Plocha střechy:&nbsp;
-                <span id="offerRoofArea">0</span> m²
-              </li>
-              <li>
-                <i class="fa-solid fa-door-open"></i> Plocha oken a dveří:&nbsp;
-                <span id="offerWindowDoorArea">0</span> m²
-              </li>
-              <li>
-                <i class="fa-solid fa-border-all"></i> Plocha podlah:&nbsp;
-                <span id="offerFloorArea">0</span> m²
-              </li>
-              <li>
-                <i class="fa-solid fa-sun"></i> Plocha stínění:&nbsp;
-                <span id="offerShadingArea">0</span> m²
-              </li>
-            </ul>
-          </div>
+					<!-- Rozměry domu -->
+					<div class="offer-section">
+						<h4><i class="fa-solid fa-ruler-combined"></i> Rozměry domu</h4>
+						<ul>
+							<li><i class="fa-solid fa-house"></i> Plocha fasády:&nbsp; <span id="offerFacadeArea">0</span>m²</li>
+							<li>
+								<i class="fa-solid fa-house-chimney"></i> Plocha střechy:&nbsp; <span id="offerRoofArea">0</span> m²
+							</li>
+							<li>
+								<i class="fa-solid fa-door-open"></i> Plocha oken a dveří:&nbsp;
+								<span id="offerWindowDoorArea">0</span> m²
+							</li>
+							<li><i class="fa-solid fa-border-all"></i> Plocha podlah:&nbsp; <span id="offerFloorArea">0</span> m²</li>
+							<li><i class="fa-solid fa-sun"></i> Plocha stínění:&nbsp; <span id="offerShadingArea">0</span> m²</li>
+						</ul>
+					</div>
 
-          <!-- Sekce pro dotace - Oblast A, C, D a bonusy -->
-          <div class="offer-section-container">
-            <div class="offer-section">
-              <h4><i class="fa-solid fa-house"></i> Oblast A: Zateplení</h4>
-              <p>
-                Dotace za plochu: <span id="areaSubsidy">50 000.00 Kč</span>
-              </p>
-            </div>
-            <div class="offer-section">
-              <h4>
-                <i class="fa-solid fa-solar-panel"></i> Oblast C: Zdroje energie
-              </h4>
-              <p>
-                Dotace za zdroje energie:
-                <span id="energySubsidy">0.00 Kč</span>
-              </p>
-            </div>
-            <div class="offer-section">
-              <h4><i class="fa-solid fa-leaf"></i> Oblast D: Další opatření</h4>
-              <p>
-                Dotace za další opatření:
-                <span id="greenRoofSubsidy">0.00 Kč</span>
-              </p>
-            </div>
-            <div class="offer-section">
-              <h4><i class="fa-solid fa-gift"></i> Bonusy</h4>
-              <p>
-                Kombinační bonus a bonus za děti:
-                <span id="bonusSubsidy">0.00 Kč</span>
-              </p>
-            </div>
-          </div>
+					<!-- Sekce pro dotace - Oblast A, C, D a bonusy -->
+					<div class="offer-section-container">
+						<div class="offer-section">
+							<h4><i class="fa-solid fa-house"></i> Oblast A: Zateplení</h4>
+							<p>Dotace za plochu: <span id="areaSubsidy">50 000.00 Kč</span></p>
+						</div>
+						<div class="offer-section">
+							<h4><i class="fa-solid fa-solar-panel"></i> Oblast C: Zdroje energie</h4>
+							<p>
+								Dotace za zdroje energie:
+								<span id="energySubsidy">0.00 Kč</span>
+							</p>
+						</div>
+						<div class="offer-section">
+							<h4><i class="fa-solid fa-leaf"></i> Oblast D: Další opatření</h4>
+							<p>
+								Dotace za další opatření:
+								<span id="greenRoofSubsidy">0.00 Kč</span>
+							</p>
+						</div>
+						<div class="offer-section">
+							<h4><i class="fa-solid fa-gift"></i> Bonusy</h4>
+							<p>
+								Kombinační bonus a bonus za děti:
+								<span id="bonusSubsidy">0.00 Kč</span>
+							</p>
+						</div>
+					</div>
 
-          <!-- Celková dotace -->
-          <div class="total-subsidy-container">
-            <h3 style="color: green; font-weight: bold">
-              Celková dotace: <span id="offerTotalSubsidy">50 000.00 Kč</span>
-            </h3>
-          </div>
+					<!-- Celková dotace -->
+					<div class="total-subsidy-container">
+						<h3 style="color: green; font-weight: bold">
+							Celková dotace: <span id="offerTotalSubsidy">50 000.00 Kč</span>
+						</h3>
+					</div>
 
-          <div class="offer-summary-container">
-            <!-- Blok pro Celkové náklady na rekonstrukci -->
-            <div class="offer-summary-box total-costs">
-              <i class="fas fa-file-invoice-dollar icon"></i>
-              <h4>Celkové náklady na rekonstrukci</h4>
-              <p
-                id="offerEstimatedBudget"
-                class="result">
-                110 000.00 Kč
-              </p>
-            </div>
+					<div class="offer-summary-container">
+						<!-- Blok pro Celkové náklady na rekonstrukci -->
+						<div class="offer-summary-box total-costs">
+							<i class="fas fa-file-invoice-dollar icon"></i>
+							<h4>Celkové náklady na rekonstrukci</h4>
+							<p id="offerEstimatedBudget" class="result">110 000.00 Kč</p>
+						</div>
 
-            <!-- Blok pro Celkovou úsporu -->
-            <div class="offer-summary-box total-savings">
-              <i class="fas fa-piggy-bank icon"></i>
-              <h4>Celková měsíční úspora</h4>
-              <p
-                id="offerTotalSavings"
-                class="result">
-                0.00
-              </p>
-            </div>
-          </div>
+						<!-- Blok pro Celkovou úsporu -->
+						<div class="offer-summary-box total-savings">
+							<i class="fas fa-piggy-bank icon"></i>
+							<h4>Celková měsíční úspora</h4>
+							<p id="offerTotalSavings" class="result">0.00</p>
+						</div>
+					</div>
 
-          <!-- Zvolené opatření -->
-          <h4>Zvolená energetická opatření:</h4>
-          <ul
-            id="offerMeasures"
-            class="measure-container"></ul>
+					<!-- Zvolené opatření -->
+					<h4>Zvolená energetická opatření:</h4>
+					<ul id="offerMeasures" class="measure-container"></ul>
 
-          <!-- Sekce pro financování -->
-          <div class="offer-section-container">
-            <div class="offer-section">
-              <h4>
-                <i class="fa-solid fa-hand-holding-dollar"></i> Financování
-              </h4>
-              <p>
-                <strong>Výše úvěru:</strong>
-                <span id="offerLoanAmount">0,00&nbsp;Kč</span>
-              </p>
-              <p>
-                <strong>Měsíční splátka:</strong>
-                <span id="offerMonthlyPayment">0,00&nbsp;Kč</span>
-              </p>
-              <p>
-                <strong>Délka financování:</strong>
-                <span id="offerLoanDuration">25 let</span>
-              </p>
-              <p>
-                <strong>Úroková sazba:</strong>
-                <span id="offerInterestRate">3.19% p.a.</span>
-              </p>
-            </div>
+					<!-- Sekce pro financování -->
+					<div class="offer-section-container">
+						<div class="offer-section">
+							<h4><i class="fa-solid fa-hand-holding-dollar"></i> Financování</h4>
+							<p>
+								<strong>Výše úvěru:</strong>
+								<span id="offerLoanAmount">0,00&nbsp;Kč</span>
+							</p>
+							<p>
+								<strong>Měsíční splátka:</strong>
+								<span id="offerMonthlyPayment">0,00&nbsp;Kč</span>
+							</p>
+							<p>
+								<strong>Délka financování:</strong>
+								<span id="offerLoanDuration"></span>
+							</p>
+							<p>
+								<strong>Úroková sazba:</strong>
+								<span id="offerInterestRate"></span>
+							</p>
+						</div>
 
-            <!-- Doporučení úspory -->
-            <div class="offer-section">
-              <h4>
-                <i class="fa-solid fa-bullseye"></i> Doporučení pro úsporu
-              </h4>
-              <p id="offerSavingsRecommendation">
-                Zvažte přidání tepelného čerpadla pro snížení nákladů na
-                vytápění. Instalace fotovoltaiky by výrazně snížila Vaše účty za
-                elektřinu. Zateplení domu je zásadní pro snížení energetických
-                ztrát.
-              </p>
-            </div>
-          </div>
+						<!-- Doporučení úspory -->
+						<div class="offer-section">
+							<h4><i class="fa-solid fa-bullseye"></i> Doporučení pro úsporu</h4>
+							<p id="offerSavingsRecommendation">
+								Zvažte přidání tepelného čerpadla pro snížení nákladů na vytápění. Instalace fotovoltaiky by výrazně
+								snížila Vaše účty za elektřinu. Zateplení domu je zásadní pro snížení energetických ztrát.
+							</p>
+						</div>
+					</div>
 
-          <!-- Doporučení opatření -->
-          <h4>Doporučení opatření pro dosažení větší úspory:</h4>
-          <ul id="offerRecommendedMeasures">
-            <li>Vaše úspory jsou vyšší než splátky. Výborně!</li>
-          </ul>
-          <button
-            onclick="window.print()"
-            class="print-button">
-            <i class="fa-solid fa-print"></i> Tisknout nabídku
-          </button>
-          <img
-            class="deprostav-logo"
-            src="public/deprostav_logo.png"
-            alt="Deprostav logo" />
-        </div>
-      </section>
-    </main>
+					<!-- Doporučení opatření -->
+					<h4>Doporučení opatření pro dosažení větší úspory:</h4>
+					<ul id="offerRecommendedMeasures">
+						<li>Vaše úspory jsou vyšší než splátky. Výborně!</li>
+					</ul>
+					<button onclick="window.print()" class="print-button">
+						<i class="fa-solid fa-print"></i> Tisknout nabídku
+					</button>
+					<img class="deprostav-logo" src="public/deprostav_logo.png" alt="Deprostav logo" />
+				</div>
+			</section>
+		</main>
 
-    <!-- Externí JavaScript -->
-    <script src="main.js"></script>
-  </body>
+		<!-- Externí JavaScript -->
+		<script src="main.js"></script>
+	</body>
 </html>
