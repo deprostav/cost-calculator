@@ -833,6 +833,7 @@ p strong {
   display: flex;
   justify-content: space-around;
   align-items: stretch;
+  gap: 1rem;
   margin-block: .5rem;
 }
 

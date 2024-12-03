@@ -3,23 +3,19 @@
   <head>
     <meta
       http-equiv="Content-Type"
-      content="text/html; charset=UTF-8"
-    />
+      content="text/html; charset=UTF-8" />
 
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+      content="width=device-width, initial-scale=1.0" />
 
     <meta
       name="robots"
-      content="noindex, nofollow"
-    />
+      content="noindex, nofollow" />
 
     <link
       rel="stylesheet"
-      href="style.css"
-    />
+      href="style.css" />
   </head>
 
   <body>
@@ -28,38 +24,32 @@
         <div class="tabs">
           <button
             class="tab-button active"
-            data-tab="dotace"
-          >
+            data-tab="dotace">
             <i class="fa-solid fa-calculator"></i> Dotace
           </button>
           <button
             class="tab-button"
-            data-tab="finance"
-          >
+            data-tab="finance">
             <i class="fa-solid fa-piggy-bank"></i> Financování
           </button>
           <button
             class="tab-button"
-            data-tab="energie"
-          >
+            data-tab="energie">
             <i class="fa-solid fa-bolt"></i> Energie
           </button>
           <button
             class="tab-button"
-            data-tab="uspory"
-          >
+            data-tab="uspory">
             <i class="fa-solid fa-seedling"></i> Úspory
           </button>
           <button
             class="tab-button"
-            data-tab="vysledek"
-          >
+            data-tab="vysledek">
             <i class="fa-solid fa-chart-line"></i> Výsledek
           </button>
           <button
             class="tab-button"
-            data-tab="nabidka"
-          >
+            data-tab="nabidka">
             <i class="fa-solid fa-file-pdf"></i> Nabídka
           </button>
         </div>
@@ -67,16 +57,14 @@
         <!-- DOTACE TAB -->
         <div
           class="tab-content active"
-          id="dotace"
-        >
+          id="dotace">
           <div class="form-group">
             <label for="clientName">Jméno klienta:</label>
             <input
               type="text"
               id="clientName"
               placeholder="Např. Jan"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <label for="clientSurname">Příjmení klienta:</label>
@@ -84,8 +72,7 @@
               type="text"
               id="clientSurname"
               placeholder="Např. Novák"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <h2><i class="fa-solid fa-calculator"></i> Výpočet dotace</h2>
           <div class="form-group">
@@ -95,8 +82,7 @@
               min="0"
               id="facadeArea"
               placeholder="Např. 120"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <label for="cellarCeilingArea">Plocha stropů sklepa (m²):</label>
@@ -105,8 +91,7 @@
               min="0"
               id="cellarCeilingArea"
               placeholder="Např. 120"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <label for="roofArea"
@@ -118,8 +103,7 @@
               min="0"
               id="roofArea"
               placeholder="Např. 80"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <label for="windowArea">Plocha oken (m²):</label>
@@ -128,8 +112,7 @@
               min="0"
               id="windowArea"
               placeholder="Např. 30"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <label for="doorArea">Plocha dveří (m²):</label>
@@ -138,8 +121,7 @@
               min="0"
               id="doorArea"
               placeholder="Např. 30"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <label for="floorArea"
@@ -151,8 +133,7 @@
               min="0"
               id="floorArea"
               placeholder="Např. 100"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <label for="shadingArea"
@@ -163,8 +144,7 @@
               min="0"
               id="shadingArea"
               placeholder="Např. 50"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <label for="numChildrenFullCare"
@@ -176,8 +156,7 @@
               min="0"
               id="numChildrenFullCare"
               placeholder="Např. 2"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <label for="numChildrenSharedCare"
@@ -189,19 +168,16 @@
               min="0"
               id="numChildrenSharedCare"
               placeholder="Např. 1"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="switch-wrapper">
             <input
               type="checkbox"
               id="selectedRegionBonus"
-              onchange="calculateEverything()"
-            />
+              onchange="calculateEverything()" />
             <label
               class="switch-label"
-              for="selectedRegionBonus"
-            ></label>
+              for="selectedRegionBonus"></label>
             <span class="switch-text"
               >Bydlíte ve vymezené obci nebo kraji?</span
             >
@@ -210,66 +186,57 @@
             <button
               id="heatPumpButton"
               class="unselected"
-              onclick="toggleMeasure(&#39;heatPump&#39;)"
-            >
+              onclick="toggleMeasure(&#39;heatPump&#39;)">
               <i class="fa-solid fa-fire-flame-curved"></i> Tepelné čerpadlo
             </button>
             <button
               id="ventilationButton"
               class="unselected"
-              onclick="toggleMeasure(&#39;ventilation&#39;)"
-            >
+              onclick="toggleMeasure(&#39;ventilation&#39;)">
               <i class="fa-solid fa-wind"></i> Rekuperace vzduchu
             </button>
             <button
               id="waterRekuperationButton"
               class="unselected"
-              onclick="toggleMeasure(&#39;waterRekuperation&#39;)"
-            >
+              onclick="toggleMeasure(&#39;waterRekuperation&#39;)">
               <i class="fa-solid fa-water"></i> Rekuperace teplé vody
             </button>
             <button
               id="photovoltaicButton"
               class="unselected"
-              onclick="toggleMeasure(&#39;photovoltaic&#39;)"
-            >
+              onclick="toggleMeasure(&#39;photovoltaic&#39;)">
               <i class="fa-solid fa-solar-panel"></i> Fotovoltaika
             </button>
             <button
               id="rainwaterTankIrrigationButton"
               class="unselected"
-              onclick="toggleRainwaterTankIrrigation(&#39;rainwaterTankIrrigation&#39;)"
-            >
+              onclick="toggleRainwaterTankIrrigation(&#39;rainwaterTankIrrigation&#39;)">
               <i class="fa-solid fa-cloud-rain"></i> Nádrž na dešťovou vodu -
               Zálivka
             </button>
             <button
               id="rainwaterTankIrrigationWCButton"
               class="unselected"
-              onclick="toggleRainwaterTankIrrigation(&#39;rainwaterTankIrrigationWC&#39;)"
-            >
+              onclick="toggleRainwaterTankIrrigation(&#39;rainwaterTankIrrigationWC&#39;)">
               <i class="fa-solid fa-toilet"></i> Nádrž na dešťovou vodu -
               Zálivka + WC
             </button>
             <button
               id="chargingStationButton"
               class="unselected"
-              onclick="toggleMeasure(&#39;chargingStation&#39;)"
-            >
+              onclick="toggleMeasure(&#39;chargingStation&#39;)">
               <i class="fa-solid fa-charging-station"></i> Elektro nabíječka
             </button>
             <button
               id="greenRoofButton"
               class="unselected"
-              onclick="toggleMeasure(&#39;greenRoof&#39;)"
-            >
+              onclick="toggleMeasure(&#39;greenRoof&#39;)">
               <i class="fa-solid fa-leaf"></i> Zelená střecha
             </button>
           </div>
           <div
             id="heatPumpOptions"
-            style="display: none"
-          >
+            style="display: none">
             <div class="form-group">
               <label for="heatPumpType"
                 ><i class="fa-solid fa-fire-flame-curved"></i> Typ tepelného
@@ -277,8 +244,7 @@
               >
               <select
                 id="heatPumpType"
-                onchange="calculateEverything()"
-              >
+                onchange="calculateEverything()">
                 <option value="Zadny">0 Kč</option>
                 <option value="VzduchVzduchUT">
                   Vzduch - Vzduch pro ústřední topení - dotace 60 000 Kč
@@ -322,8 +288,7 @@
           </div>
           <div
             id="photovoltaicSliderContainer"
-            style="display: none"
-          >
+            style="display: none">
             <label for="photovoltaicSlider"
               ><i class="fa-solid fa-solar-panel"></i> Výkon fotovoltaiky (kWp):
               <span id="photovoltaicValue">5 kWp</span></label
@@ -334,13 +299,11 @@
               min="1"
               max="10"
               value="5"
-              oninput="updatePhotovoltaicValue()"
-            />
+              oninput="updatePhotovoltaicValue()" />
           </div>
           <div
             id="greenRoofFields"
-            style="display: none"
-          >
+            style="display: none">
             <div class="form-group">
               <label for="extensiveRoofArea"
                 ><i class="fa-solid fa-leaf"></i> Extenzivní střecha
@@ -351,8 +314,7 @@
                 min="0"
                 id="extensiveRoofArea"
                 placeholder="Např. 40"
-                oninput="calculateEverything()"
-              />
+                oninput="calculateEverything()" />
             </div>
             <div class="form-group">
               <label for="semiIntensiveRoofArea"
@@ -364,8 +326,7 @@
                 min="0"
                 id="semiIntensiveRoofArea"
                 placeholder="Např. 30"
-                oninput="calculateEverything()"
-              />
+                oninput="calculateEverything()" />
             </div>
             <div class="form-group">
               <label for="intensiveRoofArea"
@@ -377,8 +338,7 @@
                 min="0"
                 id="intensiveRoofArea"
                 placeholder="Např. 20"
-                oninput="calculateEverything()"
-              />
+                oninput="calculateEverything()" />
             </div>
             <div class="form-group">
               <label for="steepRoofArea"
@@ -389,8 +349,7 @@
                 min="0"
                 id="steepRoofArea"
                 placeholder="Např. 10"
-                oninput="calculateEverything()"
-              />
+                oninput="calculateEverything()" />
             </div>
           </div>
           <div class="form-group">
@@ -403,8 +362,7 @@
               min="0"
               id="tankVolume"
               placeholder="Např. 5"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <label
@@ -413,8 +371,7 @@
             >
             <p
               id="totalSubsidy"
-              class="result money"
-            >
+              class="result money">
               50 000.00 Kč
             </p>
           </div>
@@ -425,14 +382,12 @@
             >
             <p
               id="estimatedBudget"
-              class="result money"
-            >
+              class="result money">
               110 000.00 Kč
             </p>
             <p
               id="budgetWarning"
-              class="warning-text"
-            ></p>
+              class="warning-text"></p>
           </div>
           <div class="form-group">
             <label
@@ -441,8 +396,7 @@
             >
             <p
               id="recommendedLoanAmount"
-              class="result money"
-            >
+              class="result money">
               60 000.00 Kč
             </p>
           </div>
@@ -451,8 +405,7 @@
         <!-- FINANCE TAB -->
         <div
           class="tab-content"
-          id="finance"
-        >
+          id="finance">
           <h2><i class="fa-solid fa-piggy-bank"></i> Financování</h2>
           <div class="form-group">
             <label for="loanAmount"
@@ -464,8 +417,7 @@
               min="0"
               id="loanAmount"
               placeholder="Např. 500000"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <label
@@ -473,8 +425,7 @@
             >
             <p
               id="monthlyPayment"
-              class="result money"
-            >
+              class="result money">
               0.00
             </p>
           </div>
@@ -483,8 +434,7 @@
         <!-- ENERGIE TAB -->
         <div
           class="tab-content"
-          id="energie"
-        >
+          id="energie">
           <h2><i class="fa-solid fa-bolt"></i> Energie</h2>
           <div class="form-group">
             <label for="houseArea"
@@ -495,8 +445,7 @@
               min="0"
               id="houseArea"
               placeholder="Např. 150"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <button onclick="toggleEnergyClassButtons()">
@@ -505,48 +454,40 @@
           </div>
           <div
             class="button-group energy-class"
-            style="display: none"
-          >
+            style="display: none">
             <button
               class="energy-class-button energy-class-a"
-              onclick="setEnergyClass(&#39;A&#39;)"
-            >
+              onclick="setEnergyClass(&#39;A&#39;)">
               A
             </button>
             <button
               class="energy-class-button energy-class-b"
-              onclick="setEnergyClass(&#39;B&#39;)"
-            >
+              onclick="setEnergyClass(&#39;B&#39;)">
               B
             </button>
             <button
               class="energy-class-button energy-class-c"
-              onclick="setEnergyClass(&#39;C&#39;)"
-            >
+              onclick="setEnergyClass(&#39;C&#39;)">
               C
             </button>
             <button
               class="energy-class-button energy-class-d"
-              onclick="setEnergyClass(&#39;D&#39;)"
-            >
+              onclick="setEnergyClass(&#39;D&#39;)">
               D
             </button>
             <button
               class="energy-class-button energy-class-e"
-              onclick="setEnergyClass(&#39;E&#39;)"
-            >
+              onclick="setEnergyClass(&#39;E&#39;)">
               E
             </button>
             <button
               class="energy-class-button energy-class-f"
-              onclick="setEnergyClass(&#39;F&#39;)"
-            >
+              onclick="setEnergyClass(&#39;F&#39;)">
               F
             </button>
             <button
               class="energy-class-button energy-class-g"
-              onclick="setEnergyClass(&#39;G&#39;)"
-            >
+              onclick="setEnergyClass(&#39;G&#39;)">
               G
             </button>
           </div>
@@ -560,8 +501,7 @@
               min="0"
               id="electricityUsage"
               placeholder="Např. 12"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <label for="gasUsage"
@@ -573,8 +513,7 @@
               min="0"
               id="gasUsage"
               placeholder="Např. 8"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <label for="monthlyPayments"
@@ -586,8 +525,7 @@
               min="0"
               id="monthlyPayments"
               placeholder="Např. 4000"
-              oninput="calculateEverything()"
-            />
+              oninput="calculateEverything()" />
           </div>
           <div class="form-group">
             <button onclick="toggleCustomEnergyPriceFields()">
@@ -596,8 +534,7 @@
           </div>
           <div
             id="customEnergyPriceFields"
-            style="display: none"
-          >
+            style="display: none">
             <div class="form-group">
               <label for="electricityPrice"
                 ><i class="fa-solid fa-bolt"></i> Cena elektřiny za MWh
@@ -608,8 +545,7 @@
                 min="0"
                 id="electricityPrice"
                 placeholder="Např. 5000"
-                oninput="calculateEverything()"
-              />
+                oninput="calculateEverything()" />
             </div>
             <div class="form-group">
               <label for="gasPrice"
@@ -620,8 +556,7 @@
                 min="0"
                 id="gasPrice"
                 placeholder="Např. 2000"
-                oninput="calculateEverything()"
-              />
+                oninput="calculateEverything()" />
             </div>
           </div>
           <div id="energyCostDisclaimer">
@@ -637,8 +572,7 @@
             >
             <p
               id="monthlyEnergyCost"
-              class="result money"
-            >
+              class="result money">
               550.00
             </p>
           </div>
@@ -647,36 +581,31 @@
         <!-- USPORY TAB -->
         <div
           class="tab-content"
-          id="uspory"
-        >
+          id="uspory">
           <h2><i class="fa-solid fa-seedling"></i> Úspory</h2>
           <div class="button-group">
             <button
               id="usporyInsulationButton"
               class="unselected"
-              onclick="toggleEnergyMeasure(&#39;insulation&#39;)"
-            >
+              onclick="toggleEnergyMeasure(&#39;insulation&#39;)">
               <i class="fa-solid fa-thermometer-half"></i> Optimální zateplení
             </button>
             <button
               id="usporyHeatPumpButton"
               class="unselected"
-              onclick="toggleEnergyMeasure(&#39;heatPump&#39;)"
-            >
+              onclick="toggleEnergyMeasure(&#39;heatPump&#39;)">
               <i class="fa-solid fa-fire-flame-curved"></i> Tepelné čerpadlo
             </button>
             <button
               id="usporyVentilationButton"
               class="unselected"
-              onclick="toggleEnergyMeasure(&#39;ventilation&#39;)"
-            >
+              onclick="toggleEnergyMeasure(&#39;ventilation&#39;)">
               <i class="fa-solid fa-wind"></i> Rekuperace vzduchu
             </button>
             <button
               id="usporyWaterRekuperationButton"
               class="unselected"
-              onclick="toggleEnergyMeasure(&#39;waterRekuperation&#39;)"
-            >
+              onclick="toggleEnergyMeasure(&#39;waterRekuperation&#39;)">
               <i class="fa-solid fa-water"></i> Rekuperace teplé vody
             </button>
           </div>
@@ -687,8 +616,7 @@
             >
             <p
               id="finalMonthlyPayment"
-              class="result money"
-            >
+              class="result money">
               550.00
             </p>
           </div>
@@ -700,8 +628,7 @@
             <p
               id="finalEnergyUsage"
               class="result unit"
-              data-unit="kWh"
-            >
+              data-unit="kWh">
               0.00
             </p>
           </div>
@@ -712,8 +639,7 @@
             <p
               id="totalCo2Savings"
               class="result unit"
-              data-unit="t"
-            >
+              data-unit="t">
               0.00
             </p>
           </div>
@@ -724,8 +650,7 @@
             >
             <p
               id="finalEnergyClass"
-              class="result energy-class-display disabled"
-            >
+              class="result energy-class-display disabled">
               -
             </p>
           </div>
@@ -734,8 +659,7 @@
         <!-- VYSLEDEK TAB -->
         <div
           class="tab-content"
-          id="vysledek"
-        >
+          id="vysledek">
           <h2><i class="fa-solid fa-chart-line"></i> Výsledek</h2>
           <div class="form-group">
             <label
@@ -744,8 +668,7 @@
             >
             <p
               id="totalMonthlyCost"
-              class="result money"
-            >
+              class="result money">
               550.00
             </p>
           </div>
@@ -756,15 +679,13 @@
             >
             <p
               id="totalSavings"
-              class="result money"
-            >
+              class="result money">
               0.00
             </p>
           </div>
           <div
             id="energySurplusDisclaimer"
-            style="display: none"
-          >
+            style="display: none">
             <p>
               <i class="fa-solid fa-info-circle"></i> Produkujete přebytečnou
               energii, kterou můžete prodat zpět do sítě.
@@ -775,8 +696,7 @@
         <!-- VÝSLEDKOVÁ STRÁNKA (Nabídka) -->
         <div
           class="tab-content"
-          id="nabidka"
-        >
+          id="nabidka">
           <h2><i class="fa-solid fa-file-pdf"></i> Nabídka</h2>
           <div class="offer-client-info">
             <div class="client-box">
@@ -869,8 +789,7 @@
               <h4>Celkové náklady na rekonstrukci</h4>
               <p
                 id="offerEstimatedBudget"
-                class="result"
-              >
+                class="result">
                 110 000.00 Kč
               </p>
             </div>
@@ -881,8 +800,7 @@
               <h4>Celková měsíční úspora</h4>
               <p
                 id="offerTotalSavings"
-                class="result"
-              >
+                class="result">
                 0.00
               </p>
             </div>
@@ -892,8 +810,7 @@
           <h4>Zvolená energetická opatření:</h4>
           <ul
             id="offerMeasures"
-            class="measure-container"
-          ></ul>
+            class="measure-container"></ul>
 
           <!-- Sekce pro financování -->
           <div class="offer-section-container">
@@ -940,15 +857,13 @@
           </ul>
           <button
             onclick="window.print()"
-            class="print-button"
-          >
+            class="print-button">
             <i class="fa-solid fa-print"></i> Tisknout nabídku
           </button>
           <img
             class="deprostav-logo"
-            src="/public/deprostav_logo.png"
-            alt="Deprostav logo"
-          />
+            src="public/deprostav_logo.png"
+            alt="Deprostav logo" />
         </div>
       </section>
     </main>
