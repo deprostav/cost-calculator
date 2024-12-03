@@ -247,13 +247,24 @@ function calculateEverything() {
 function checkInsulationFields() {
   const facadeArea =
     parseFloat(document.getElementById('facadeArea').value) || 0
+  const cellarCeilingArea =
+    parseFloat(document.getElementById('cellarCeilingArea').value) || 0
+  const combinedFacadeArea = facadeArea + cellarCeilingArea
+
   const roofArea = parseFloat(document.getElementById('roofArea').value) || 0
-  const windowDoorArea =
-    parseFloat(document.getElementById('windowDoorArea').value) || 0
+
+  const windowArea =
+    parseFloat(document.getElementById('windowArea').value) || 0
+  const doorArea = parseFloat(document.getElementById('doorArea').value) || 0
+  const windowDoorArea = windowArea + doorArea
+
   const floorArea = parseFloat(document.getElementById('floorArea').value) || 0
 
   const shouldSelect =
-    facadeArea > 0 || roofArea > 0 || windowDoorArea > 0 || floorArea > 0
+    combinedFacadeArea > 0 ||
+    roofArea > 0 ||
+    windowDoorArea > 0 ||
+    floorArea > 0
   if (shouldSelect !== selectedMeasures.insulation) {
     toggleMeasure('insulation')
   }
@@ -468,16 +479,24 @@ function calculateSubsidy() {
   // Dotace oblast A (zateplení)
   const facadeArea =
     parseFloat(document.getElementById('facadeArea').value) || 0
+  const cellarCeilingArea =
+    parseFloat(document.getElementById('cellarCeilingArea').value) || 0
+  const combinedFacadeArea = facadeArea + cellarCeilingArea
+
   const roofArea = parseFloat(document.getElementById('roofArea').value) || 0
-  const windowDoorArea =
-    parseFloat(document.getElementById('windowDoorArea').value) || 0
+
+  const windowArea =
+    parseFloat(document.getElementById('windowArea').value) || 0
+  const doorArea = parseFloat(document.getElementById('doorArea').value) || 0
+  const windowDoorArea = windowArea + doorArea
+
   const floorArea = parseFloat(document.getElementById('floorArea').value) || 0
   const shadingArea =
     parseFloat(document.getElementById('shadingArea').value) || 0
 
   // Výpočet rozpočtu pro oblast A
   const areaCost =
-    facadeArea * 1300 +
+    combinedFacadeArea * 1300 +
     roofArea * 1300 +
     windowDoorArea * 4900 +
     floorArea * 1700 +
@@ -607,13 +626,11 @@ function calculateSubsidy() {
     formatNumber(totalSubsidy) + ' Kč'
 
   // Předběžný rozpočet na rekonstrukci - bez limitu na 1 000 000 Kč pro oblast A
+  const totalBonus = combinationBonus + familyBonus + regionBonus
+
   const estimatedBudget =
-    (areaCost * 2 +
-      100000 +
-      energySubsidy * 2 +
-      greenRoofSubsidy * 2 +
-      (combinationBonus + familyBonus + regionBonus) * 2) *
-    1.1
+    (areaCost * 2 + 100000 + energySubsidy * 2 + greenRoofSubsidy * 2) * 1.1 -
+    totalBonus
   document.getElementById('estimatedBudget').innerText =
     formatNumber(estimatedBudget) + ' Kč'
   document.getElementById('recommendedLoanAmount').innerText =
@@ -713,12 +730,20 @@ function updateOfferPage() {
   ).innerText = `${clientName} ${clientSurname}`
 
   // Rozměry domu
-  document.getElementById('offerFacadeArea').innerText =
-    document.getElementById('facadeArea').value || '0'
+  const facadeArea = document.getElementById('facadeArea').value || '0'
+  const cellarCeilingArea =
+    document.getElementById('cellarCeilingArea').value || '0'
+  const combinedFacadeArea =
+    parseFloat(facadeArea) + parseFloat(cellarCeilingArea)
+
+  const windowArea = document.getElementById('windowArea').value || '0'
+  const doorArea = document.getElementById('doorArea').value || '0'
+  const windowDoorArea = parseFloat(windowArea) + parseFloat(doorArea)
+
+  document.getElementById('offerFacadeArea').innerText = `${combinedFacadeArea}`
   document.getElementById('offerRoofArea').innerText =
     document.getElementById('roofArea').value || '0'
-  document.getElementById('offerWindowDoorArea').innerText =
-    document.getElementById('windowDoorArea').value || '0'
+  document.getElementById('offerWindowDoorArea').innerText = `${windowDoorArea}`
   document.getElementById('offerFloorArea').innerText =
     document.getElementById('floorArea').value || '0'
   document.getElementById('offerShadingArea').innerText =
@@ -1016,22 +1041,32 @@ function prepareDataForRaynet() {
   // Získání hodnot pro výpočet
   const facadeArea =
     parseFloat(document.getElementById('facadeArea').value) || 0
+  const cellarCeilingArea =
+    parseFloat(document.getElementById('cellarCeilingArea').value) || 0
+  const combinedFacadeArea = facadeArea + cellarCeilingArea
+
   const roofArea = parseFloat(document.getElementById('roofArea').value) || 0
 
-  // Vypočítání součtu facadeArea a roofArea
-  const totalArea = facadeArea + roofArea
+  // Vypočítání součtu combinedFacadeArea a roofArea
+  const totalArea = combinedFacadeArea + roofArea
 
   // Získání údajů o výpočtech a opatřeních
   const calculationData = {
     facadeArea: document.getElementById('facadeArea')
       ? document.getElementById('facadeArea').value
       : '',
+    cellarCeilingArea: document.getElementById('cellarCeilingArea')
+      ? document.getElementById('cellarCeilingArea').value
+      : '',
     roofArea: document.getElementById('roofArea')
       ? document.getElementById('roofArea').value
       : '',
     totalArea: totalArea, // Součet plochy fasády a střechy
-    windowDoorArea: document.getElementById('windowDoorArea')
-      ? document.getElementById('windowDoorArea').value
+    windowArea: document.getElementById('windowArea')
+      ? document.getElementById('windowArea').value
+      : '',
+    doorArea: document.getElementById('doorArea')
+      ? document.getElementById('doorArea').value
       : '',
     floorArea: document.getElementById('floorArea')
       ? document.getElementById('floorArea').value

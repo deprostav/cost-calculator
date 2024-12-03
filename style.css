@@ -17,6 +17,10 @@ header {
   animation: slideDown 0.8s ease-out; /* Přidána animace pro header */
 }
 
+ul {
+  margin-block: .5rem;
+}
+
 .flex {
   display: flex;
   align-items: center;
@@ -81,7 +85,7 @@ header {
 
 .tab-content {
   display: none;
-  padding: 30px;
+  padding: 3rem;
   position: relative;
 }
 
@@ -323,6 +327,9 @@ button:hover {
 }
 
 @media (max-width: 480px) {
+  .tab-content {
+    padding: .5rem;
+  }
   .tab-button {
     font-size: 12px;
     padding: 10px;
@@ -343,6 +350,16 @@ button:hover {
 
   .form-group label {
     font-size: 12px;
+  }
+
+  .print-button {
+    margin-block-end: 2rem;
+  }
+
+  .deprostav-logo {
+    bottom: 10px;
+    right: 10px;
+    width: 75px;
   }
 
   input[type='number'],
@@ -722,7 +739,7 @@ input[type='range']::-ms-thumb {
 
 .offer-section ul li {
   font-size: 1.2em;
-  margin-bottom: 10px;
+  margin-block: .5rem;
   display: flex;
   align-items: center;
 }
@@ -738,12 +755,12 @@ input[type='range']::-ms-thumb {
 .offer-client-info {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
 .offer-client-info .client-box {
   flex: 1;
-  margin: 10px;
   padding: 20px;
   border: 1px solid #dd2b1b;
   border-radius: 1rem;
@@ -752,7 +769,7 @@ input[type='range']::-ms-thumb {
 }
 
 .offer-client-info .client-box h4 {
-  margin-bottom: 10px;
+  margin-bottom: .5rem;
   font-size: 1.3em;
   color: #dd2b1b;
 }
@@ -816,13 +833,13 @@ p strong {
   display: flex;
   justify-content: space-around;
   align-items: stretch;
-  gap: 20px;
   margin-block: .5rem;
 }
 
 .offer-summary-box {
   flex: 1;
   padding: 20px;
+  margin-block: .5rem;
   border-radius: 1rem;
   border: 1px solid #dd2b1b;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -1045,7 +1062,6 @@ p strong {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 20px;
 }
 
 /* Každý box pro oblasti a bonusy */
@@ -1080,7 +1096,6 @@ p strong {
 
 .offer-section ul li {
   font-size: 1.2em;
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
 }
