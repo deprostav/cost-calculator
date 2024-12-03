@@ -24,13 +24,15 @@
 
 				<!-- DOTACE TAB -->
 				<div class="tab-content active" id="dotace">
-					<div class="form-group">
-						<label for="clientName">Jméno klienta:</label>
-						<input type="text" id="clientName" placeholder="Např. Jan" oninput="calculateEverything()" />
-					</div>
-					<div class="form-group">
-						<label for="clientSurname">Příjmení klienta:</label>
-						<input type="text" id="clientSurname" placeholder="Např. Novák" oninput="calculateEverything()" />
+					<div class="flex-2-cols">
+						<div class="form-group">
+							<label for="clientName">Jméno klienta:</label>
+							<input type="text" id="clientName" placeholder="Např. Jan" oninput="calculateEverything()" />
+						</div>
+						<div class="form-group">
+							<label for="clientSurname">Příjmení klienta:</label>
+							<input type="text" id="clientSurname" placeholder="Např. Novák" oninput="calculateEverything()" />
+						</div>
 					</div>
 					<h2><i class="fa-solid fa-calculator"></i> Výpočet dotace</h2>
 					<div class="form-group">
@@ -402,12 +404,15 @@
 						<ul>
 							<li><i class="fa-solid fa-house"></i> Plocha fasády:&nbsp; <span id="offerFacadeArea">0</span>m²</li>
 							<li>
+								<i class="fa-solid fa-door-closed"></i> Plocha stropů sklepa:&nbsp;
+								<span id="offerCellarCeilingArea">0</span> m²
+							</li>
+
+							<li>
 								<i class="fa-solid fa-house-chimney"></i> Plocha střechy:&nbsp; <span id="offerRoofArea">0</span> m²
 							</li>
-							<li>
-								<i class="fa-solid fa-door-open"></i> Plocha oken a dveří:&nbsp;
-								<span id="offerWindowDoorArea">0</span> m²
-							</li>
+							<li><i class="fa-solid fa-door-open"></i> Plocha oken:&nbsp; <span id="offerWindowArea">0</span> m²</li>
+							<li><i class="fa-solid fa-door-closed"></i> Plocha dveří:&nbsp; <span id="offerDoorArea">0</span> m²</li>
 							<li><i class="fa-solid fa-border-all"></i> Plocha podlah:&nbsp; <span id="offerFloorArea">0</span> m²</li>
 							<li><i class="fa-solid fa-sun"></i> Plocha stínění:&nbsp; <span id="offerShadingArea">0</span> m²</li>
 						</ul>

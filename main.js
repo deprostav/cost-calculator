@@ -525,14 +525,12 @@ function calculateSubsidy() {
 	const totalSubsidy = areaSubsidy + energySubsidy + greenRoofSubsidy + combinationBonus + familyBonus + regionBonus;
 
 	// Aktualizace na úvodní stránce výpočtu dotace
-	document.getElementById('totalSubsidy').innerText = formatNumber(totalSubsidy) + ' Kč';
+	document.getElementById('totalSubsidy').innerText = formatNumber(totalSubsidy);
 
 	// Předběžný rozpočet na rekonstrukci - bez limitu na 1 000 000 Kč pro oblast A
-	const totalBonus = combinationBonus + familyBonus + regionBonus;
-
-	const estimatedBudget = (areaCost * 2 + 100000 + energySubsidy * 2 + greenRoofSubsidy * 2) * 1.1 - totalBonus;
-	document.getElementById('estimatedBudget').innerText = formatNumber(estimatedBudget) + ' Kč';
-	document.getElementById('recommendedLoanAmount').innerText = formatNumber(estimatedBudget - totalSubsidy) + ' Kč';
+	const estimatedBudget = (areaCost * 2 + 100000 + energySubsidy * 2 + greenRoofSubsidy * 2) * 1.1;
+	document.getElementById('estimatedBudget').innerText = formatNumber(estimatedBudget);
+	document.getElementById('recommendedLoanAmount').innerText = formatNumber(estimatedBudget - totalSubsidy);
 
 	// Aktualizace na stránce nabídky
 	if (document.getElementById('offerTotalSubsidy')) {
@@ -613,17 +611,12 @@ function updateOfferPage() {
 	document.getElementById('offerClientName').innerText = `${clientName} ${clientSurname}`;
 
 	// Rozměry domu
-	const facadeArea = document.getElementById('facadeArea').value || '0';
-	const cellarCeilingArea = document.getElementById('cellarCeilingArea').value || '0';
-	const combinedFacadeArea = parseFloat(facadeArea) + parseFloat(cellarCeilingArea);
-
-	const windowArea = document.getElementById('windowArea').value || '0';
-	const doorArea = document.getElementById('doorArea').value || '0';
-	const windowDoorArea = parseFloat(windowArea) + parseFloat(doorArea);
-
-	document.getElementById('offerFacadeArea').innerText = `${combinedFacadeArea}`;
+	document.getElementById('offerFacadeArea').innerText = document.getElementById('facadeArea').value || '0';
+	document.getElementById('offerCellarCeilingArea').innerText =
+		document.getElementById('cellarCeilingArea').value || '0';
 	document.getElementById('offerRoofArea').innerText = document.getElementById('roofArea').value || '0';
-	document.getElementById('offerWindowDoorArea').innerText = `${windowDoorArea}`;
+	document.getElementById('offerWindowArea').innerText = document.getElementById('windowArea').value || '0';
+	document.getElementById('offerDoorArea').innerText = document.getElementById('doorArea').value || '0';
 	document.getElementById('offerFloorArea').innerText = document.getElementById('floorArea').value || '0';
 	document.getElementById('offerShadingArea').innerText = document.getElementById('shadingArea').value || '0';
 
